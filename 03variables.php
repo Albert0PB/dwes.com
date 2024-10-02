@@ -148,53 +148,5 @@ echo "La sesión de usuario finaliza en " . SESION_USUARIO . "segundos.<br>";
 echo "El script es " . __FILE__ . " y la línea es " . __LINE__ . ".<br>";
 ?>
 
-    <h2>Expresiones, operadores y operandos</h2>
-    <p>
-        Una expresión es una combinación de operandos y operadores que arroja
-        un resultado. Tiene tipo de datos, que depende del tipo de datos de sus 
-        operandos y de la operación realizada.
-        Un operador es un símbolo formado por uno, dos o tres caracteres que
-        denota una operación. Los operadores pueden ser unarios (un operando), 
-        binarios (utilizan dos operandos) o ternarios (tres operandos).
-        Un operando es una expresión en sí misma, siendo la más simple un literal o 
-        una variable, pero también puede ser un valor devuelto por una función 
-        o el resultado de otra expresión. Las operaciones de una expresión no se 
-        ejecutan a la vez sino en orden según la precedencia y asociatividad de los 
-        operadores. Esta se puede alterar a conveniencia.
-    </p>
-
-    <h2>Operadores</h2>
-    <h3>Asignación</h3>
-
-<?php
-    // El operador de asignación es =
-
-$numero = 45;
-$resultado = $numero + 5 - 29;
-$sin_valor = NULL;
-?>
-
-    <h3>Operadores aritméticos</h3>
-<?php
-    /*
-    Binarios
-        + Suma
-        - Resta
-        * Multiplicación
-        / División
-        % Módulo (resto de la división entera)
-        ** Exponenciación
-
-    Unarios
-        + Conversión a entero (conversión de string a integer)
-        - El opuesto
-    */
-
-$numero_cadena = "35";
-$numero_entero = +$numero_cadena;
-echo "La variable \$numero_entero vale $numero_entero y es de tipo " . gettype($numero_entero) . ".<br>";
-
-?>
-
 </body>
 </html>
