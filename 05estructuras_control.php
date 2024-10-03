@@ -401,6 +401,99 @@ do{
 
 echo "Se han generado $total números múltiplos de 3<br>";
 
+    /*
+        Generar números aleatorios entre 1 y 10 y sumar los pares hasta
+        que la suma sea superior a 100 o se hayan generado 20 números.
+    */
+
+$suma_pares = 0;
+$contador = 0;
+while( true ) {
+    $numero = rand(1,10);
+    if( $numero % 2 == 0 ) {
+        $suma_pares += $numero;
+    };
+
+    if( $suma_pares > 100 ) break;
+
+    $contador++;
+    if( $contador == 20 ) break;
+};
+
+echo "Se han generado $contador números y los pares han sumado $suma_pares.<br>";
+
+    /*
+        Break admite un argumento numérico para indicar de qué bucle se sale.
+        Siempre y cuando se encuentre en un bucle anidado.
+    */
+
+    /* 
+        Generar 200 números aleatorios entre 1 y 1000.
+        Por cada número generado se comprueban cuántos números primos hay desde 1 hasta sí mismo.
+        Si hay más de 10 números primos, se termina de generar números aleatorios.
+        Al final, visualizar cada número generado y los primos hasta ese número.
+    */
+
+for( $i = 0; $i < 200; $i++ ) {
+    $numero = rand(1,1000);
+    $cuantos_primos = 0;
+    echo "El número generado es: $numero. Primos: ";
+
+    for( $j = 1; $j < $numero; $j++ ) {
+        $es_primo = true;
+        $raiz_cuadrada = sqrt($j);
+        $k = 2;
+
+        while( $es_primo AND $k < $raiz_cuadrada) {
+            if( $j % $k == 0 ) $es_primo = false;
+            $k++;
+        };
+
+        if( $es_primo ) {
+            echo "$j ";
+            $cuantos_primos++;
+
+            if( $cuantos_primos >= 10 ) break 2;
+        };
+    };
+};
+
+
+    /*
+        Genera 10 números aleatorios. Por cada uno, genera tantos caracteres en minúscula
+        aleatorios como ese número. Si alguno de estos caracteres es 'z', el programa acaba.
+        Si el número generado es impar, que vuelva a generar otro.
+    */
+
+for( $i = 0; $i < 10; $i++ ) {
+    $numero = rand(1,10);
+    echo "Número: $numero ";
+    if( $numero % 2 == 1 ) continue;
+
+    for( $j = 0; $j <= $numero; $j++ ) {
+        $caracter = chr(rand(97, 122));
+        echo "$caracter ";
+        if( $caracter == "z" ) break 2;
+    };
+    echo "<br>";
+
+};
+?>
+
+    <h3>Sintaxis alternativa a la estructura de cnotrol</h3>
+
+<?php
+$numero = rand(1,100);
+
+if( $numero % 2 == 0 ):
+    echo "El número $numero es par<br>";
+else:
+    echo "El número $numero es impar<br>";
+endif;
+
+for( $i = 1; $i <= 10; $i++ ):
+    echo "$i x $numero = " . $i * $numero . "<br>";
+endfor;
 ?>
 
 </body>
