@@ -118,10 +118,132 @@ echo "Su media es {$alumno['media']}.<br>";
     </p>
 
 <?php
+$notas = Array(
+    Array(3.5, 6, 8, 9.5, 3),
+    Array(2, 5.5, 6, 2, 10),
+    Array(4.5, 3, 2.5, 7, 8),
+    Array(7, 1, 0, 1.5, 3.5)
+);
+echo "El elemento en la fila 2 columna 3: {$notas[1][2]}.<br>";
+
+
+$notas[][] = 9;
+echo "El último elemento de la última fila: {$notas[4][0]}.<br>";
+
+$notas[3][0] = 7.5;
+echo "El último elemento de la fila 3: {$notas[3][5]}.<br>";
+
+$numeros = [1,2,3,4,5];
+echo "El último elemento del array es {$numeros[count($numeros) - 1]}.<br>";
+
+$coches = [
+    '1234abc' => ['marca' => 'Seat', 'modelo' => 'Ibiza', 'motor' => 'Diesel', 'pvp' => 18000],
+    '4321bca' => ['marca' => 'Ford', 'modelo' => 'Focus', 'motor' => 'Gasolina', 'pvp' => 21000]
+];
+
+echo "El primer coche es {$coches['1234abc']['marca']} modelo {$coches['1234abc']['modelo']}.<br>"
+
+    /*
+        Crea un array de un equipo de fútbol donde cada fila son las posiciones donde juegan
+        los jugadores con el conjunto de jugadores identificacos por su dorsal.
+    */
+?>
+
+    <h2>Arrays multidimensionales</h2>
+
+<?php
+$notas = [
+    [
+        [3,4,5,6],
+        [2,8,9,3],
+
+    ],
+    [
+        [1,8,9,5],
+        [2,4,8,5]
+    ],
+    [
+        [2,8,4,6],
+        [9,10,4,3]
+    ]
+];
+
+echo "Accedo al elemento 1,1,2: {$notas[1][1][2]}.<br>";
+
+$notas = [
+    'juan' => [
+        'trimestre1' => ['dwes' => 6, 'dwec' => 5, 'daw' => 8, 'diw' => 7],
+        'trimestre2' => ['dwes' => 5.5, 'dwec' => 7.5, 'daw' => 6, 'diw' => 6],
+        'trimestre3' => ['dwes' => 5, 'dwec' => 7, 'daw' => 6.5, 'diw' => 4]
+    ],
+    'maria' => [
+        'trimestre1' => ['dwes' => 9, 'dwec' => 6, 'daw' => 7.5, 'diw' => 7],
+        'trimestre2' => ['dwes' => 8, 'dwec' => 7, 'daw' => 6.5, 'diw' => 5.5],
+        'trimestre3' => ['dwes' => 7, 'dwec' => 7, 'daw' => 4.5, 'diw' => 5.5]
+    ]
+];
+
+$alumno = 'maria';
+$trimestre = 'T2';
+$modulo = 'dwec';
+
+echo "La nota de María en el segundo trimestre en dwec: {$notas['maria']['T2']['dwec']}.<br>";
+echo "La nota de María en el segundo trimestre en dwec: {$notas[$alumno][$trimestre][$modulo]}.<br>";
+?>
+
+    <h2>Recorrer un array</h2>
+
+
+<?php
+$numeros = [6,19,12,7,11,9,3];
+
+    /*
+        Para cualquier tipo de array tenemos el bucle for...each
+        foreach( $array as [$clave =>] $valor ) {
+        
+        }
+    */
+
+foreach( $numeros as $numero ) {
+    echo "El número es {$numero}.<br>";
+};
+
+$alumno = [];
+$alumno['nombre'] = "Juan Gómez";
+$alumno[0] = 4;
+$alumno[1] = 6;
+$alumno[2] = 5;
+$alumno['media'] = 5;
+
+foreach( $alumno as $key => $value ) {
+    echo "Elemento con clave $key y valor $value.<br>";
+};
+?>
+
+    <h3>Recorrido de arrays multidimensionales</h3>
+
+<?php
+foreach( $notas as $alumno => $trimestres ) {
+    echo "<h4>Notas de $alumno: </h4>";
+    foreach( $trimestres as $trimestre => $modulos ) {
+        echo "<h5>Notas del trimestre $trimestre: </h5>";
+        foreach( $modulos as $modulo => $nota ) {
+            echo "<p>Nota de $modulo: $nota</p>";
+        };
+    };
+};
+
+
+foreach( $coches as $matricula => $coche ) {
+    echo "Coche con matrícula: $matricula.<br>";
+    foreach( $coche as $key => $value ) {
+        echo "$key => $value<br>";
+    };
+    echo "--------------------<br>";
+};
 
 
 ?>
-
 
 </body>
 </html>
