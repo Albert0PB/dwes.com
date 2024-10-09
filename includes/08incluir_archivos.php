@@ -21,11 +21,32 @@
 
     */
 
-include("/includes/funciones.php");
+    /* 
+        MODIFICACIÓN DE LAS RUTAS DE BÚSQUEDA DE ARCHIVOS EN php.ini
+    */
+
+    /*
+        Obtenemos la directiva "include_path" y le concatenamos el directorio que 
+        queremos para el include.
+    */
+    // ini_set("include_path", "");     => Esto sobreescribe la directiva "include_path".
+
+$include_path_actual = ini_get("include_path");                             // Leo path actual
+$include_path_actual .= (":" . $_SERVER['DOCUMENT_ROOT'] . "/includes");    // Añado directorio
+$ini_set("include_path", $include_path_actual);                             // Asigno nuevo include_path
+include("/funciones.php");                                                  // Indico solo el archivo que necesito
+
+    /*
+        También es posible utilizar:
+        require($_SERVER['DOCUMENT_ROOT'] . "/includes/funciones.php");
+        Que añade /var/www/dwes.com . /includes/funciones.php
+        Es decir, desde la raíz de archivos de la máquina y concatenando los directorios 
+        que queremos.
+    */
 
 inicio_html( "Inclusión de archivos", ["/styles/general.css"] );
-echo "<h1>Inclusión de archivos PHP en scripts PHP</h1>";
 
+echo "<h1>Inclusión de archivos PHP en scripts PHP</h1>";
 
 fin_html();
 
